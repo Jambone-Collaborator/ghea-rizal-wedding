@@ -87,11 +87,16 @@ if (rsvpForm) {
     submitBtn.textContent = 'Mengirim…';
 
     try {
+      const params = new URLSearchParams();
+      params.append('nama',      data.nama);
+      params.append('kehadiran', data.kehadiran);
+      params.append('jumlah',    data.jumlah);
+      params.append('pesan',     data.pesan);
+
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: params
       });
       rsvpForm.reset();
       rsvpStatus.textContent = 'Terima kasih! RSVP Anda telah kami terima. ♡';
