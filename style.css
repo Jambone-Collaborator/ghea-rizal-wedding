@@ -468,19 +468,31 @@ body > *:not(.parallax-bg) {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 210px;
   gap: 6px;
   margin-top: 32px;
 }
 
-.g-item { overflow: hidden; }
+.g-item {
+  overflow: hidden;
+  background: var(--dark-mid);
+}
+
+.g-portrait {
+  aspect-ratio: 2 / 3;
+}
+
+.g-landscape {
+  aspect-ratio: 4 / 3;
+  grid-column: span 2;
+}
+
 .g-item img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 20%;
   transition: transform 0.7s var(--ease);
 }
-.g-item:hover img { transform: scale(1.05); }
+.g-item:hover img { transform: scale(1.03); }
 
 /* ════════════════════════════════════════════
    BUTTONS
@@ -595,8 +607,8 @@ body > *:not(.parallax-bg) {
 
   .gallery-grid {
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 160px;
   }
+  .g-landscape { grid-column: span 2; }
 
   .countdown-grid { gap: 6px; }
   .cd-item { min-width: 50px; }
