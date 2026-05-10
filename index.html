@@ -259,9 +259,44 @@
         apabila Bapak / Ibu / Saudara / i berkenan hadir<br>
         dan memberikan doa restu kepada kedua mempelai.
       </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyUpcetclGG0BXL7w68yc7A8cOda2b2te0oJfoMsDd9cONRw/viewform" target="_blank" rel="noopener" class="btn btn--gold">
-        Isi Form RSVP
-      </a>
+
+      <form id="rsvpForm" class="rsvp-form" novalidate>
+        <div class="rsvp-field">
+          <label class="rsvp-label" for="rsvpNama">Nama Lengkap</label>
+          <input class="rsvp-input" type="text" id="rsvpNama" name="nama" placeholder="Nama Anda" required>
+        </div>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label">Konfirmasi Kehadiran</label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio">
+              <input type="radio" name="kehadiran" value="Hadir" required>
+              <span>Hadir</span>
+            </label>
+            <label class="rsvp-radio">
+              <input type="radio" name="kehadiran" value="Tidak dapat hadir">
+              <span>Tidak dapat hadir</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-field" id="jumlahField">
+          <label class="rsvp-label" for="rsvpJumlah">Jumlah Tamu</label>
+          <select class="rsvp-input rsvp-select" id="rsvpJumlah" name="jumlah">
+            <option value="1 orang">1 orang</option>
+            <option value="2 orang">2 orang</option>
+            <option value="Lebih dari 2">Lebih dari 2</option>
+          </select>
+        </div>
+
+        <div class="rsvp-field">
+          <label class="rsvp-label" for="rsvpPesan">Pesan &amp; Doa <span class="rsvp-optional">(opsional)</span></label>
+          <textarea class="rsvp-input rsvp-textarea" id="rsvpPesan" name="pesan" placeholder="Tulis pesan untuk Ghea &amp; Rizal…" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--gold rsvp-submit">Kirim RSVP</button>
+        <p class="rsvp-status" id="rsvpStatus"></p>
+      </form>
     </div>
   </section>
 

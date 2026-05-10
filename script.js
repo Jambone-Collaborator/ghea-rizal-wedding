@@ -59,6 +59,53 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
+// ── RSVP FORM ────────────────────────────────────────────────────
+const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+const rsvpForm   = document.getElementById('rsvpForm');
+const rsvpStatus = document.getElementById('rsvpStatus');
+
+if (rsvpForm) {
+  rsvpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = {
+      nama:      rsvpForm.nama.value.trim(),
+      kehadiran: rsvpForm.kehadiran.value,
+      jumlah:    rsvpForm.jumlah.value,
+      pesan:     rsvpForm.pesan.value.trim()
+    };
+
+    if (!data.nama || !data.kehadiran) {
+      rsvpStatus.textContent = 'Mohon isi nama dan konfirmasi kehadiran.';
+      rsvpStatus.classList.add('show');
+      return;
+    }
+
+    const submitBtn = rsvpForm.querySelector('.rsvp-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Mengirim…';
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      rsvpForm.reset();
+      rsvpStatus.textContent = 'Terima kasih! RSVP Anda telah kami terima. ♡';
+      rsvpStatus.classList.add('show');
+      submitBtn.textContent  = 'Terkirim';
+    } catch {
+      rsvpStatus.textContent = 'Gagal mengirim. Coba lagi ya.';
+      rsvpStatus.classList.add('show');
+      submitBtn.disabled    = false;
+      submitBtn.textContent = 'Kirim RSVP';
+    }
+  });
+}
+
 // ── SMOOTH ANCHOR ────────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
