@@ -60,7 +60,7 @@ tick();
 setInterval(tick, 1000);
 
 // ── RSVP FORM ────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrtRjwu9m7kVzOOUFrCQYKQ5tvUUxvGRe3bUhSQ2CDcEy-J0C3seNqj-nt2V4i1BcD/exec';
 
 const rsvpForm   = document.getElementById('rsvpForm');
 const rsvpStatus = document.getElementById('rsvpStatus');
